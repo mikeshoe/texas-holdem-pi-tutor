@@ -33,6 +33,10 @@ class Deck(object):
     def num_cards_remaining(self):
         return len(self.cards)
     
+    'Removes Card from deck so it cannot be part of flop, turn, or river'
+    def remove_card_from_deck(self, card):
+        pass
+    
     'Loads deck unshuffled with 52 playing cards'
     def __load_cards__(self):
         for cardSuit in self.cardSuitList:
@@ -49,6 +53,8 @@ class Deck(object):
             swap_card = self.cards.pop(swap_index-1) 
             self.cards.insert(x, swap_card)
             self.cards.insert(swap_index, loop_card)
+            
+            
             
             
         

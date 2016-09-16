@@ -6,6 +6,11 @@ Created on Sep 14, 2016
 import unittest
 from app.deck import Deck
 from app.card import Card
+from app.cardsuit import CardSuit
+from app.cardvalue import CardValue
+from test.test_deque import fail
+
+
 
 
 class Test(unittest.TestCase):
@@ -45,6 +50,35 @@ class Test(unittest.TestCase):
         mydeck = Deck()
         mycard = mydeck.draw_card()
         assert 51 == mydeck.num_cards_remaining()
+        
+    def test_deck_contains_juice_newton_card(self):
+        mydeck = Deck()
+        juice_card = Card(CardSuit.HEART, CardValue.QUEEN)
+        current_card = None
+        
+        for x in range(0,51):
+            current_card = mydeck.draw_card()
+            if juice_card == current_card:
+                return
+            else:
+                current_card = None
+                
+        assert current_card is not None
+                
+    def test_removal_of_juice_newton_card(self):
+        mydeck = Deck()
+        juice_card = Card(CardSuit.HEART, CardValue.QUEEN)
+        
+        mydeck.remove_card_from_deck(juice_card)   
+       
+        while mydeck.num_cards_remaining() > 0:
+            current_card = mydeck.draw_card()
+            if juice_card == current_card:
+                fail
+                
+        pass
+                
+        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
