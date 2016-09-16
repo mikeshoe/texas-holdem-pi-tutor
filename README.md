@@ -7,8 +7,8 @@
 
 ##Capabilities
 * Simulate a game of texas hold-em 
-* Scan playing cards to represent and players hand
-* Calculate the strength of a players hand
+* Scan playing cards to represent a players hand
+* Calculate the strength of the players hand
 
 ##Disclaimer
 Please do not gamble your money away.  We are not responsible if you lose your money because of this tool. I'd really like to stress the do not gamble part since your decision making is clearly flawed for considering this tool.   
