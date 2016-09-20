@@ -65,7 +65,7 @@ class Test(unittest.TestCase):
         assert 5 == community_cards.num_community_cards()
         
         
-        'This should throw an exception & fail as a player is limited to two hole cards'
+        'This should throw an exception & fail as hold-em is limited to 5 community cards'
         community_cards.add_community_card(six_diamonds)
         
     @unittest.expectedFailure    
@@ -74,7 +74,7 @@ class Test(unittest.TestCase):
         community_cards = CommunityCards()
         community_cards.add_community_card(black_bullet)
         
-        'This should throw an exception & fail - hole cards must be different'
+        'This should throw an exception & fail - community cards must be different'
         community_cards.add_community_card(black_bullet)
 
 if __name__ == "__main__":
