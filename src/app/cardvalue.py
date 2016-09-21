@@ -20,3 +20,4 @@ class CardValue(object):
     FOUR = "FOUR"
     THREE = "THREE"
     TWO = "TWO"
+    

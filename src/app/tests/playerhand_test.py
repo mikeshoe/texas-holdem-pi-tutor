@@ -127,6 +127,34 @@ class Test(UTParent):
         hand.add_hole_card(self.get_five_spades())
         
         assert False == hand.is_big_slick()
+        
+    def test_suited_hand(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_king_diamonds())
+        hand.add_hole_card(self.get_ace_diamonds())
+        
+        assert True == hand.is_suited() 
+        
+    def test_not_suited_hand(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_king_diamonds())
+        hand.add_hole_card(self.get_ace_hearts())
+        
+        assert False == hand.is_suited()
+        
+    def test_is_connected(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_king_diamonds())
+        hand.add_hole_card(self.get_ace_hearts())
+        
+        assert True == hand.is_connected()
+  
+    def test_is_not_connected(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_king_diamonds())
+        hand.add_hole_card(self.get_five_spades())
+        
+        assert False == hand.is_connected()             
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_add_one_player_hole_card']

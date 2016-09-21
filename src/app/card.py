@@ -17,6 +17,24 @@ class Card(object):
     
     def is_ace(self):
         return self.cardValue == CardValue.ACE
+    
+    def is_suited(self, card):
+        return self.cardSuit == card.cardSuit
+    
+    def is_connected(self, card):
+        cardValueList = (CardValue.TWO, CardValue.THREE, CardValue.FOUR, CardValue.FIVE, CardValue.SIX, CardValue.SEVEN, CardValue.EIGHT, CardValue.NINE, CardValue.TEN, CardValue.JACK, CardValue.QUEEN, CardValue.KING, CardValue.ACE)
+    
+        myindex = cardValueList.index(self.cardValue)
+        otherindex = cardValueList.index(card.cardValue)
+    
+        result = myindex - otherindex
+        
+        'connected cards will be next to one another in the cardValueList'
+        if result >= -1 and result <= 1:
+            return True
+        else:
+            return False
+    
 
     def __init__(self, cardSuit, cardValue):
         self.cardSuit = cardSuit

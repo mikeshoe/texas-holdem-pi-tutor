@@ -16,6 +16,7 @@ class PlayerHand(object):
         
     def add_hole_card(self, card):
         if self.num_hole_cards() < 2:
+            'cannot add the same the same card twice'
             if self.holeCards.count(card) == 0:
                 self.holeCards.append(card)
             else:
@@ -49,10 +50,20 @@ class PlayerHand(object):
     
     'Big slick is the term used to describe having one ace and one king.  Suit does not matter.' 
     def is_big_slick(self):
-            if len(self.holeCards) != 2:
-                return False
-            else:
-                return self.holeCards[0].is_ace() and self.holeCards[1].is_king() or self.holeCards[0].is_king() and self.holeCards[1].is_ace()
-    
-    
+        if len(self.holeCards) != 2:
+            return False
+        else:
+            return self.holeCards[0].is_ace() and self.holeCards[1].is_king() or self.holeCards[0].is_king() and self.holeCards[1].is_ace()
+
+    def is_suited(self):
+        if len(self.holeCards) != 2:
+            return False
+        else:
+            return self.holeCards[0].cardSuit == self.holeCards[1].cardSuit
+
+    def is_connected(self):
+         if len(self.holeCards) != 2:
+            return False
+         else:
+            return self.holeCards[0].is_connected(self.holeCards[1])
         
