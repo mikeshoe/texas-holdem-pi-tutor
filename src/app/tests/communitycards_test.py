@@ -8,9 +8,10 @@ from app.card import Card
 from app.cardvalue import CardValue
 from app.cardsuit import CardSuit
 from app.communitycards import CommunityCards
+from app.tests.utparent import UTParent
 
 
-class Test(unittest.TestCase):
+class Test(UTParent):
 
 
     def setUp(self):
@@ -22,11 +23,11 @@ class Test(unittest.TestCase):
 
 
     def test_add_community_cards(self):
-        ace_spades = Card(CardSuit.SPADE, CardValue.ACE)
-        two_diamonds = Card(CardSuit.DIAMOND, CardValue.TWO)
-        three_hearts = Card(CardSuit.HEART, CardValue.THREE)
-        four_clubs = Card(CardSuit.CLUB, CardValue.FOUR)
-        five_spades = Card(CardSuit.SPADE, CardValue.FIVE)
+        ace_spades = self.get_ace_spades()
+        two_diamonds = self.get_two_diamonds()
+        three_hearts = self.get_three_hearts()
+        four_clubs = self.get_four_clubs()
+        five_spades = self.get_five_spades()
         
         community_cards = CommunityCards()
         assert 0 == community_cards.num_community_cards()
@@ -43,12 +44,12 @@ class Test(unittest.TestCase):
 
     @unittest.expectedFailure   
     def test_too_many_community_cards(self):
-        ace_spades = Card(CardSuit.SPADE, CardValue.ACE)
-        two_diamonds = Card(CardSuit.DIAMOND, CardValue.TWO)
-        three_hearts = Card(CardSuit.HEART, CardValue.THREE)
-        four_clubs = Card(CardSuit.CLUB, CardValue.FOUR)
-        five_spades = Card(CardSuit.SPADE, CardValue.FIVE)
-        six_diamonds = Card(CardSuit.DIAMOND, CardValue.SIX)
+        ace_spades = self.get_ace_spades()
+        two_diamonds = self.get_two_diamonds()
+        three_hearts = self.get_three_hearts()
+        four_clubs = self.get_four_clubs()
+        five_spades = self.get_five_spades()
+        six_diamonds = self.get_six_diamonds()
         
         community_cards = CommunityCards()
         assert 0 == community_cards.num_community_cards()
@@ -69,7 +70,7 @@ class Test(unittest.TestCase):
         
     @unittest.expectedFailure    
     def test_community_cards_must_be_different(self):
-        black_bullet = Card(CardSuit.SPADE, CardValue.ACE)
+        black_bullet = self.get_ace_spades()
         community_cards = CommunityCards()
         community_cards.add_community_card(black_bullet)
         

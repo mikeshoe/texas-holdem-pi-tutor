@@ -7,10 +7,10 @@ import unittest
 from app.card import Card 
 from app.cardsuit import CardSuit
 from app.cardvalue import CardValue
+from app.tests.utparent import UTParent
 
 
-class Test(unittest.TestCase):
-
+class Test(UTParent):
 
     def setUp(self):
         pass
@@ -21,18 +21,18 @@ class Test(unittest.TestCase):
 
 
     def testNewCard(self):
-        myCard = Card(CardSuit.HEART, CardValue.ACE)
+        myCard = self.get_ace_hearts()
         assert myCard != None
         
     def testCardsEqual(self):
-        tenHeartsCard1 = Card(CardSuit.HEART, CardValue.TEN)
-        tenHeartsCard2 = Card(CardSuit.HEART, CardValue.TEN)
+        tenHeartsCard1 = self.get_ten_hearts()
+        tenHeartsCard2 = self.get_ten_hearts()
         assert tenHeartsCard1 == tenHeartsCard2
         
         
     def testCardsNotEqual(self):
-        tenHeartsCard = Card(CardSuit.HEART, CardValue.TEN)
-        jackHeartsCard = Card(CardSuit.HEART, CardValue.JACK)
+        tenHeartsCard = self.get_ten_hearts()
+        jackHeartsCard = self.get_jack_hearts()
         assert tenHeartsCard != jackHeartsCard
 
 

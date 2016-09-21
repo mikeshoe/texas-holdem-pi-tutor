@@ -9,11 +9,12 @@ from app.card import Card
 from app.cardsuit import CardSuit
 from app.cardvalue import CardValue
 from test.test_deque import fail
+from app.tests.utparent import UTParent
 
 
 
 
-class Test(unittest.TestCase):
+class Test(UTParent):
        
     def setUp(self):
         pass
@@ -53,7 +54,7 @@ class Test(unittest.TestCase):
         
     def test_deck_contains_juice_newton_card(self):
         mydeck = Deck()
-        juice_card = Card(CardSuit.HEART, CardValue.QUEEN)
+        juice_card = self.get_queen_hearts()
         current_card = None
         
         for x in range(0,51):
@@ -67,7 +68,7 @@ class Test(unittest.TestCase):
                 
     def test_removal_of_juice_newton_card(self):
         mydeck = Deck()
-        juice_card = Card(CardSuit.HEART, CardValue.QUEEN)
+        juice_card = self.get_queen_hearts()
         
         mydeck.remove_card_from_deck(juice_card)   
        

@@ -8,11 +8,11 @@ from app.card import Card
 from app.cardvalue import CardValue
 from app.cardsuit import CardSuit
 from app.playerhand import PlayerHand
+from app.tests.utparent import UTParent
 
 
 
-
-class Test(unittest.TestCase):
+class Test(UTParent):
 
 
     def setUp(self):
@@ -24,8 +24,8 @@ class Test(unittest.TestCase):
 
 
     def test_add_player_hole_cards(self):
-        black_bullet = Card(CardSuit.SPADE, CardValue.ACE)
-        bloody_duece = Card(CardSuit.DIAMOND, CardValue.TWO)
+        black_bullet = self.get_ace_spades()
+        bloody_duece = self.get_two_diamonds()
         hand = PlayerHand()
         assert 0 == hand.num_hole_cards()
         hand.add_hole_card(black_bullet)
@@ -35,8 +35,9 @@ class Test(unittest.TestCase):
         
     @unittest.expectedFailure   
     def test_too_many_hole_cards(self):
-        black_bullet = Card(CardSuit.SPADE, CardValue.ACE)
-        bloody_duece = Card(CardSuit.DIAMOND, CardValue.TWO)
+        black_bullet = self.get_ace_spades()
+        bloody_duece = self.get_two_diamonds()
+        three_hearts = self.get_three_hearts()
         hand = PlayerHand()
         assert 0 == hand.num_hole_cards()
         hand.add_hole_card(black_bullet)
@@ -45,19 +46,19 @@ class Test(unittest.TestCase):
         assert 2 == hand.num_hole_cards()
         
         'This should throw an exception & fail as a player is limited to two hole cards'
-        hand.add_hole_card(bloody_duece)
+        hand.add_hole_card(three_hearts)
     
     @unittest.expectedFailure    
     def test_player_hole_cards_must_be_different(self):
-        black_bullet = Card(CardSuit.SPADE, CardValue.ACE)
+        black_bullet = self.get_ace_spades()
         hand = PlayerHand()
         hand.add_hole_card(black_bullet)
         'This should throw an exception & fail - hole cards must be different'
         hand.add_hole_card(black_bullet)
         
     def test_is_not_pocket_rockets(self):
-        black_bullet = Card(CardSuit.SPADE, CardValue.ACE)
-        red_king = Card(CardSuit.DIAMOND, CardValue.KING)
+        black_bullet = self.get_ace_spades()
+        red_king = self.get_king_diamonds()
         hand = PlayerHand()
         hand.add_hole_card(black_bullet)
         hand.add_hole_card(red_king)
@@ -66,8 +67,8 @@ class Test(unittest.TestCase):
                
          
     def test_is_pocket_rockets(self):
-        black_bullet = Card(CardSuit.SPADE, CardValue.ACE)
-        red_bullet = Card(CardSuit.DIAMOND, CardValue.ACE)
+        black_bullet = self.get_ace_spades()
+        red_bullet = self.get_ace_diamonds()
 
         hand = PlayerHand()
         hand.add_hole_card(black_bullet)
