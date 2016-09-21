@@ -73,7 +73,60 @@ class Test(UTParent):
         hand.add_hole_card(red_bullet) 
         
         assert True == hand.is_pocket_rockets()
+        
+    def test_is_not_pair(self):
+        black_bullet = self.get_ace_spades()
+        red_king = self.get_king_diamonds()
+        hand = PlayerHand()
+        hand.add_hole_card(black_bullet)
+        hand.add_hole_card(red_king)
+        
+        assert False == hand.is_pair()
+        
+    def test_is_pair(self):
+        black_bullet = self.get_ace_spades()
+        red_bullet = self.get_ace_diamonds()
 
+        hand = PlayerHand()
+        hand.add_hole_card(black_bullet)
+        hand.add_hole_card(red_bullet) 
+        
+        assert True == hand.is_pair()
+        
+    def test_one_card_is_not_pair(self):
+        black_bullet = self.get_ace_spades()
+        hand = PlayerHand()
+        hand.add_hole_card(black_bullet)
+        
+        assert False == hand.is_pair()
+        
+    def test_is_face_pair(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_king_diamonds())
+        hand.add_hole_card(self.get_king_spades())
+        
+        assert True == hand.is_face_pair()
+
+    def test_is_not_face_pair(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_king_diamonds())
+        hand.add_hole_card(self.get_five_spades())
+        
+        assert False == hand.is_face_pair()
+        
+    def test_is_big_slick(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_ace_diamonds())
+        hand.add_hole_card(self.get_king_spades())
+        
+        assert True == hand.is_big_slick()
+
+    def test_is_not_big_slick(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_king_diamonds())
+        hand.add_hole_card(self.get_five_spades())
+        
+        assert False == hand.is_big_slick()
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_add_one_player_hole_card']

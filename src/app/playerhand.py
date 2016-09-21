@@ -26,11 +26,33 @@ class PlayerHand(object):
     def num_hole_cards(self):
         return len(self.holeCards)
     
+    'Pocket Rocks is the term used to describe having a pair of aces'
     def is_pocket_rockets(self):
+        if False == self.is_pair():
+            return False
+        
         for card in self.holeCards:
             if card.cardValue is not CardValue.ACE:
                 return False
         return True
-        
+    
+    def is_pair(self):
+            if len(self.holeCards) != 2:
+                return False
+            else:
+                'Pairs have the same card value'
+                return self.holeCards[0].cardValue == self.holeCards[1].cardValue
+            
+    'A pair of face cards (kings, queens, jacks)'         
+    def is_face_pair(self):
+        return self.is_pair() and self.holeCards[0].is_face() == self.holeCards[1].is_face()
+    
+    'Big slick is the term used to describe having one ace and one king.  Suit does not matter.' 
+    def is_big_slick(self):
+            if len(self.holeCards) != 2:
+                return False
+            else:
+                return self.holeCards[0].is_ace() and self.holeCards[1].is_king() or self.holeCards[0].is_king() and self.holeCards[1].is_ace()
+    
     
         

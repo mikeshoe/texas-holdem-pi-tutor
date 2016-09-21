@@ -57,7 +57,10 @@ class UTParent(unittest.TestCase):
     'SPADES'   
     def get_five_spades(self):
         return Card(CardSuit.SPADE, CardValue.FIVE)  
-      
+
+    def get_king_spades(self):
+        return Card(CardSuit.SPADE, CardValue.KING)
+          
     def get_ace_spades(self):
         return Card(CardSuit.SPADE, CardValue.ACE)    
 

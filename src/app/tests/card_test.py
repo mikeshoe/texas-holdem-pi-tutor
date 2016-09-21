@@ -17,20 +17,24 @@ class Test(UTParent):
         pass
 
 
-    def testNewCard(self):
+    def test_new_card(self):
         myCard = self.get_ace_hearts()
         assert myCard != None
         
-    def testCardsEqual(self):
+    def test_cards_equal(self):
         tenHeartsCard1 = self.get_ten_hearts()
         tenHeartsCard2 = self.get_ten_hearts()
         assert tenHeartsCard1 == tenHeartsCard2
         
         
-    def testCardsNotEqual(self):
+    def test_cards_not_equal(self):
         tenHeartsCard = self.get_ten_hearts()
         jackHeartsCard = self.get_jack_hearts()
         assert tenHeartsCard != jackHeartsCard
+        
+    def test_card_is_face(self):
+        testcard = self.get_king_diamonds()
+        assert True == testcard.is_face()
 
 
 if __name__ == "__main__":
