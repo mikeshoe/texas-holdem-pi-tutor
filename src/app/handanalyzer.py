@@ -5,29 +5,27 @@ Created on Sep 20, 2016
 '''
 from app.playerhand import PlayerHand
 from app.communitycards import CommunityCards
+from app import playerhand
 
 class HandAnalyzer(object):
     'Class that contains the hand analyzer logic'
 
-
-    def calculate_hand_strength(self, player_hand, community_cards):
-        self.preflop_strength = self.__preflop_calc__(player_hand)
         
-        self.flop_strength = None
-        self.turn_strength = None
-        self.river_strength = None
-        
-    def __preflop_calc__(self, player_hand):
+    def preflop_strength(self, player_hand):
         if player_hand.is_pocket_rockets():
-            'best'
+            return "Pocket Rocks are the best!"
         elif player_hand.is_face_pair():
-            'very strong'
-        elif player_hand.is_pair() or player_hand().is_big_slick():
-            'strong'
-        elif player_hand.is_suited() or player_hand.is_connected():
-            'has potential'
+            return "Pocket pair of face cards is very strong"
+        elif player_hand.is_pair():
+            return "Pocket pair is a great way to start"
+        elif player_hand.is_big_slick():
+            return "Big Slick offers great potential"
+        elif player_hand.is_suited():
+            return "Suited cards bring flush potential"
+        elif player_hand.is_connected():
+            return "Connectors bring straight potential"
         else:
-            'run'
+            return "Proceed with caution.  Your hand blows!"
             
                 
         
