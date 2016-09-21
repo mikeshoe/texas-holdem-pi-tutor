@@ -5,9 +5,6 @@ Created on Sep 14, 2016
 '''
 import unittest
 from app.deck import Deck
-from app.card import Card
-from app.cardsuit import CardSuit
-from app.cardvalue import CardValue
 from test.test_deque import fail
 from app.tests.utparent import UTParent
 

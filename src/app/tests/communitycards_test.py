@@ -4,9 +4,6 @@ Created on Sep 20, 2016
 @author: mike
 '''
 import unittest
-from app.card import Card
-from app.cardvalue import CardValue
-from app.cardsuit import CardSuit
 from app.communitycards import CommunityCards
 from app.tests.utparent import UTParent
 
