@@ -22,6 +22,9 @@ print "   Scanner found: ", hole_card_one
 print "Please scan 2nd hole card:"
 print "   Scanner found: ", hole_card_two
 
+print " "
+print " "
+
 'construct player hand from scanned cards'
 player_hand = PlayerHand()
 player_hand.add_hole_card(hole_card_one)
@@ -35,6 +38,6 @@ deck.remove_card_from_deck(hole_card_one)
 deck.remove_card_from_deck(hole_card_two)
 
 analyzer = HandAnalyzer()
-print "Preflop hand strength:  ", analyzer.preflop_strength(player_hand)
+print "***   ", analyzer.preflop_strength(player_hand), "   ***"
 
 
