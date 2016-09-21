@@ -5,6 +5,7 @@ Created on Sep 16, 2016
 '''
 
 from app.card import Card
+from app.cardvalue import CardValue
 
 class PlayerHand(object):
     'Class that represents a single players hand (hole cards)'
@@ -24,5 +25,12 @@ class PlayerHand(object):
         
     def num_hole_cards(self):
         return len(self.holeCards)
+    
+    def is_pocket_rockets(self):
+        for card in self.holeCards:
+            if card.cardValue is not CardValue.ACE:
+                return False
+        return True
+        
     
         

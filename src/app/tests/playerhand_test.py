@@ -55,7 +55,25 @@ class Test(unittest.TestCase):
         'This should throw an exception & fail - hole cards must be different'
         hand.add_hole_card(black_bullet)
         
+    def test_is_not_pocket_rockets(self):
+        black_bullet = Card(CardSuit.SPADE, CardValue.ACE)
+        red_king = Card(CardSuit.DIAMOND, CardValue.KING)
+        hand = PlayerHand()
+        hand.add_hole_card(black_bullet)
+        hand.add_hole_card(red_king)
         
+        assert False == hand.is_pocket_rockets()
+               
+         
+    def test_is_pocket_rockets(self):
+        black_bullet = Card(CardSuit.SPADE, CardValue.ACE)
+        red_bullet = Card(CardSuit.DIAMOND, CardValue.ACE)
+
+        hand = PlayerHand()
+        hand.add_hole_card(black_bullet)
+        hand.add_hole_card(red_bullet) 
+        
+        assert True == hand.is_pocket_rockets()
 
 
 if __name__ == "__main__":
