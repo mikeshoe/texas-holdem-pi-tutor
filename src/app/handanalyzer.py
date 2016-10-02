@@ -20,6 +20,8 @@ class HandAnalyzer(object):
             return "Pocket pair is a great way to start"
         elif player_hand.is_big_slick():
             return "Big Slick offers great potential"
+        elif player_hand.is_connected_and_suited():
+            return "Connected and suited - great potential"
         elif player_hand.is_suited():
             return "Suited cards bring flush potential"
         elif player_hand.is_connected():
