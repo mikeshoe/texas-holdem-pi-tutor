@@ -154,7 +154,29 @@ class Test(UTParent):
         hand.add_hole_card(self.get_king_diamonds())
         hand.add_hole_card(self.get_five_spades())
         
-        assert False == hand.is_connected()             
+        assert False == hand.is_connected()        
+        
+    def test_is_suited_but_not_connected(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_ace_diamonds())
+        hand.add_hole_card(self.get_six_diamonds())
+        
+        assert False == hand.is_connected_and_suited()
+        
+    def test_is_not_suited_but_is_connected(self):
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_king_diamonds())
+        hand.add_hole_card(self.get_ace_hearts())
+        
+        assert False == hand.is_connected_and_suited()
+        
+    def test_is_connected_and_suited(self): 
+        hand = PlayerHand()
+        hand.add_hole_card(self.get_king_diamonds())
+        hand.add_hole_card(self.get_ace_diamonds())
+        
+        assert True == hand.is_connected_and_suited()          
+             
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_add_one_player_hole_card']

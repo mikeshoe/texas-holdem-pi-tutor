@@ -62,8 +62,11 @@ class PlayerHand(object):
             return self.holeCards[0].cardSuit == self.holeCards[1].cardSuit
 
     def is_connected(self):
-         if len(self.holeCards) != 2:
+        if len(self.holeCards) != 2:
             return False
-         else:
+        else:
             return self.holeCards[0].is_connected(self.holeCards[1])
+        
+    def is_connected_and_suited(self):
+        return self.is_suited() and self.is_connected()
         
