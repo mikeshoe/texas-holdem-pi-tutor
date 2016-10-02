@@ -13,10 +13,10 @@ class Test(unittest.TestCase):
     NUM_CARDS_IN_DECK = 52
     THIS_DIR = os.path.dirname(os.path.abspath(__file__))
     TRAINING_LABELS_FILEPATH = os.path.join(THIS_DIR, '../config/training_labels.tsv')
-    print "Training Labels Filepath: ", TRAINING_LABELS_FILEPATH 
+    #print "Training Labels Filepath: ", TRAINING_LABELS_FILEPATH 
     
     TRAINING_IMAGE_FILEPATH = os.path.join(THIS_DIR, '../images/training_image.png')
-    print "Training Image Filepath: ", TRAINING_IMAGE_FILEPATH
+    #print "Training Image Filepath: ", TRAINING_IMAGE_FILEPATH
         
     def setUp(self):
         pass
@@ -39,7 +39,7 @@ class Test(unittest.TestCase):
         
         card_filepath = os.path.join(self.THIS_DIR, '../images/qd-7h.jpg')
         cards = card_vision.find_hole_cards(card_filepath, training_deck)
-        print cards
+        #print cards
         pass
         
         

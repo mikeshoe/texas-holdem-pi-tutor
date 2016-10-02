@@ -14,11 +14,11 @@ class CardVision(object):
     'Class responsible for computer vision operations'
     
 
-###############################################################################
-# Utility code from 
-# http://git.io/vGi60A
-# Thanks to author of the sudoku example for the wonderful blog posts!
-###############################################################################
+    ###############################################################################
+    # Utility code from 
+    # http://git.io/vGi60A
+    # Thanks to author of the sudoku example for the wonderful blog posts!
+    ###############################################################################
 
     def rectify(self, h):
         h = h.reshape((4,2))
@@ -40,8 +40,11 @@ class CardVision(object):
     def preprocess(self, img):
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
         blur = cv2.GaussianBlur(gray,(5,5),2 )
+        
+        # Not sure which of the following works better.  More testing needed.
         # thresh = cv2.adaptiveThreshold(blur,255,1,1,11,1)
         tmp, thresh = cv2.threshold(blur,0,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
+        
         return thresh
       
     def imgdiff(self, img1,img2):
@@ -120,6 +123,7 @@ class CardVision(object):
         
         im = cv2.imread(hole_card_image_path)
         
+        #ToDo - Should be able to remove this logic if we force the cards to be scanned by camera in a consistent way
         width = im.shape[0]
         height = im.shape[1]
         if width < height:
@@ -127,7 +131,7 @@ class CardVision(object):
             im = cv2.flip(im,1)
       
         cards = [self.find_closest_card(training, c) for c in self.getCards(im, NUM_HOLE_CARDS)]
-        print cards
+        # print cards
           
     def __init__(self):
         self
