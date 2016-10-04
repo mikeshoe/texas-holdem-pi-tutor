@@ -7,6 +7,9 @@ from app.deck import Deck
 from app.card import Card
 from app.playerhand import PlayerHand
 from app.handanalyzer import HandAnalyzer
+import time
+import datetime
+import os
 
 if __name__ == '__main__':
     pass
@@ -27,6 +30,18 @@ print " "
 print " "
 
 print "Please put your hole cards on the scanner:"
+#print "(press any key once your hole cards are in place)"
+variable = raw_input('(press return once your hole cards are in place)')
+
+utc_ts = datetime.datetime.utcnow()
+utc_string = utc_ts.strftime('%Y-%m-%d-%H%M%SZ')
+holecards_pict_file = "hole_cards-" + utc_string + ".jpg"
+take_pic_command ='raspistill -n -t 1000 -o /home/pi/' + holecards_pict_file
+print "Command:" + take_pic_command
+#uncomment when running on pi
+#os.system(take_pic_command)
+
+print " "
 print "   Scanned hole cards are: ", hole_card_one, " and ", hole_card_two
 print " "
 print " "
