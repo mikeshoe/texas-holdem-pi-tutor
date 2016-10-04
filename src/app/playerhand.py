@@ -69,4 +69,8 @@ class PlayerHand(object):
         
     def is_connected_and_suited(self):
         return self.is_suited() and self.is_connected()
+    
+    def has_card(self, card):
+        return self.holeCards[0] == card or self.holeCards[1] == card
+        
         

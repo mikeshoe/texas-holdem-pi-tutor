@@ -5,13 +5,13 @@ Created on Sep 20, 2016
 '''
 from app.playerhand import PlayerHand
 from app.communitycards import CommunityCards
-from app import playerhand
+
 
 class HandAnalyzer(object):
     'Class that contains the hand analyzer logic'
 
         
-    def preflop_strength(self, player_hand):
+    def calculate_preflop_strength(self, player_hand):
         if player_hand.is_pocket_rockets():
             return "Pocket Rocks are the best!"
         elif player_hand.is_face_pair():
@@ -28,8 +28,21 @@ class HandAnalyzer(object):
             return "Connectors bring straight potential"
         else:
             return "Proceed with caution.  Your hand blows!"
+        
+    def calculate_flop_strength(self, player_hand, community_cards):
+        pass
+    
+    def calculate_turn_strength(self, player_hand, community_cards):
+        pass
             
-                
+    def calculate_river_strength(self, player_hand, community_cards):
+        pass         
+    
+    def __init__(self):
+        self.preflop_strength = None
+        self.flop_strength = None
+        self.turn_strength = None 
+        self.river_strength = None
         
         
         

@@ -7,6 +7,10 @@ Created on Sep 30, 2016
 import os
 import numpy as np
 import cv2
+from app.playerhand import PlayerHand
+from app.card import Card
+from app.cardsuit import CardSuit
+from app.cardvalue import CardValue
 
 
 
@@ -124,15 +128,72 @@ class CardVision(object):
         im = cv2.imread(hole_card_image_path)
         
         #ToDo - Should be able to remove this logic if we force the cards to be scanned by camera in a consistent way
-        width = im.shape[0]
-        height = im.shape[1]
-        if width < height:
-            im = cv2.transpose(im)
-            im = cv2.flip(im,1)
+        #width = im.shape[0]
+        #height = im.shape[1]
+        #if width < height:
+        #    im = cv2.transpose(im)
+        #    im = cv2.flip(im,1)
       
         cards = [self.find_closest_card(training, c) for c in self.getCards(im, NUM_HOLE_CARDS)]
-        # print cards
-          
+        #print cards
+        return self.build_player_hand(cards)
+    
+    def build_player_hand(self, cards):
+        card1 = cards[0]
+        card2 = cards[1]
+        
+        playerHand = PlayerHand()
+        playerHand.add_hole_card(self.build_card(card1))
+        playerHand.add_hole_card(self.build_card(card2))
+        
+        return playerHand
+        
+    
+    def build_card(self, card):
+        value = CardValue()
+        suit = CardSuit()
+        
+        if card[0] == "2":
+            value = CardValue.TWO
+        elif card[0] == "3":
+            value = CardValue.THREE
+        elif card[0] == "4":
+            value = CardValue.FOUR
+        elif card[0] == "5":
+            value = CardValue.FIVE
+        elif card[0] == "6":
+            value = CardValue.SIX
+        elif card[0] == "7":
+            value = CardValue.SEVEN
+        elif card[0] == "8":
+            value = CardValue.EIGHT
+        elif card[0] == "9":
+            value = CardValue.NINE
+        elif card[0] == "10":
+            value = CardValue.TEN
+        elif card[0] == "J":
+            value = CardValue.JACK
+        elif card[0] == "Q":
+            value = CardValue.QUEEN
+        elif card[0] == "K":
+            value = CardValue.KING
+        elif card[0] == "A":
+            value = CardValue.ACE
+     
+        if card[1] == "C":
+            suit = CardSuit.CLUB
+        elif card[1] == "D":
+            suit = CardSuit.DIAMOND               
+        elif card[1] == "H":
+            suit = CardSuit.HEART  
+        elif card[1] == "S":
+            suit = CardSuit.SPADE
+            
+        return Card(suit,value)         
+        
+            
+        
+      
     def __init__(self):
         self
     
