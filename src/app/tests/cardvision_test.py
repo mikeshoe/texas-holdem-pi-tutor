@@ -72,8 +72,8 @@ class Test(UTParent):
         
         card_filepath = os.path.join(self.THIS_DIR, '../images/3c-6c.jpg')
         player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
-        print player_hand.holeCards[0]
-        print player_hand.holeCards[1]
+        #print player_hand.holeCards[0]
+        #print player_hand.holeCards[1]
 
         assert True == player_hand.has_card (self.get_three_clubs())
         assert True == player_hand.has_card (self.get_six_clubs())        
@@ -158,6 +158,136 @@ class Test(UTParent):
         assert True == player_hand.has_card (self.get_seven_clubs())
         assert True == player_hand.has_card (self.get_ten_hearts())        
         
+    def test_find_seven_diamonds_and_two_clubs(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/7d-2c.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_seven_diamonds())
+        assert True == player_hand.has_card (self.get_two_clubs())
+        
+    def test_find_nine_clubs_and_three_diamonds(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/9c-3d.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_three_diamonds())
+        assert True == player_hand.has_card (self.get_nine_clubs())
+        
+    def test_find_nine_diamonds_and_four_diamonds(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/9d-4d.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_four_diamonds())
+        assert True == player_hand.has_card (self.get_nine_diamonds())
+ 
+    def test_find_nine_spades_and_four_hearts(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/9s-4h.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_four_hearts())
+        assert True == player_hand.has_card (self.get_nine_spades())
+        
+    def test_find_ace_clubs_and_ace_diamonds(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/ac-ad.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_ace_clubs())
+        assert True == player_hand.has_card (self.get_ace_diamonds())
+        
+    def test_find_queen_spades_and_jack_diamonds(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/jd-qs.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_queen_spades())
+        assert True == player_hand.has_card (self.get_jack_diamonds())
+        
+    def test_find_jack_hearts_and_eight_clubs(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/jh-8c.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_eight_clubs())
+        assert True == player_hand.has_card (self.get_jack_hearts())
+        
+    def test_find_jack_spades_and_eight_spades(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/js-8s.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_eight_spades())
+        assert True == player_hand.has_card (self.get_jack_spades())
+        
+    def test_find_king_hearts_and_ace_spades(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/kh-as.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_ace_spades())
+        assert True == player_hand.has_card (self.get_king_hearts())
+        
+    def test_find_king_spades_and_nine_hearts(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/ks-9h.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_nine_hearts())
+        assert True == player_hand.has_card (self.get_king_spades())
+        
+    def test_find_queen_clubs_and_six_spades(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/qc-6s.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_queen_clubs())
+        assert True == player_hand.has_card (self.get_six_spades())
+        
+    def test_find_queen_diamonds_and_jack_clubs(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/qd-jc.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_queen_diamonds())
+        assert True == player_hand.has_card (self.get_jack_clubs())
+                  
+    def test_find_queen_hearts_and_three_hearts(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/qh-3h.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_queen_hearts())
+        assert True == player_hand.has_card (self.get_three_hearts())
+              
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_train_deck']
     unittest.main()
