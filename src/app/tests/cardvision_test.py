@@ -287,7 +287,17 @@ class Test(UTParent):
 
         assert True == player_hand.has_card (self.get_queen_hearts())
         assert True == player_hand.has_card (self.get_three_hearts())
-              
+
+    def test_find_seven_hearts_and_five_spades(self):
+        card_vision = CardVision()
+        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
+        
+        card_filepath = os.path.join(self.THIS_DIR, '../images/7h-5s.jpg')
+        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+
+        assert True == player_hand.has_card (self.get_seven_hearts())
+        assert True == player_hand.has_card (self.get_five_spades())
+                      
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test_train_deck']
     unittest.main()
