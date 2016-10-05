@@ -23,4 +23,7 @@ class CommunityCards(object):
     def num_community_cards(self):
         return len(self.communityCards)
     
+    def get_community_cards(self):
+        return self.communityCards
+    
         

@@ -7,6 +7,7 @@ import unittest
 from app.card import Card 
 from app.cardsuit import CardSuit
 from app.cardvalue import CardValue
+from app.playerhand import PlayerHand
 
 class UTParent(unittest.TestCase):
 
@@ -179,7 +180,12 @@ class UTParent(unittest.TestCase):
     def get_ace_spades(self):
         return Card(CardSuit.SPADE, CardValue.ACE)    
 
-
+    # Player Hands
+    def get_player_hand_AC_AD(self):
+        ph = PlayerHand()
+        ph.add_hole_card(self.get_ace_clubs())
+        ph.add_hole_card(self.get_ace_diamonds())
+        return ph
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

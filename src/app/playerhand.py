@@ -72,5 +72,8 @@ class PlayerHand(object):
     
     def has_card(self, card):
         return self.holeCards[0] == card or self.holeCards[1] == card
+    
+    def get_player_hole_cards(self):
+        return self.holeCards
         
         
