@@ -71,15 +71,15 @@ print " "
 deck = Deck()
 
 'must remove scanned cards from deck so they do not show up in community cards'
-deck.remove_card_from_deck(hole_card_one)
-deck.remove_card_from_deck(hole_card_two)
+deck.remove_card_from_deck(player_hand.holeCards[0])
+deck.remove_card_from_deck(player_hand.holeCards[1])
 
-#analyzer = HandAnalyzer()
-#print "**********************************************************************"
-#print "***   Preflop advice:", analyzer.calculate_preflop_strength(player_hand), "    ***"
-#print "**********************************************************************"
-#print " "
-#print " "
+analyzer = HandAnalyzer()
+print "**********************************************************************"
+print "***   Preflop advice:", analyzer.calculate_preflop_strength(player_hand), "    ***"
+print "**********************************************************************"
+print " "
+print " "
 
 
 #print "Press any key to play the flop:"
