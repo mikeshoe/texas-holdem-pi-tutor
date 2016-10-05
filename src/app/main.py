@@ -42,8 +42,8 @@ variable = raw_input('(press return once your hole cards are in place)')
 
 utc_ts = datetime.datetime.utcnow()
 utc_string = utc_ts.strftime('%Y-%m-%d-%H%M%SZ')
-holecards_pict_file = "hole_cards-" + utc_string + ".jpg"
-take_pic_command ='raspistill -n -t 1000 -o /home/pi/' + holecards_pict_file
+holecards_pict_file = "/home/pi/hole_cards-" + utc_string + ".jpg"
+take_pic_command ='raspistill -n -t 1000 -o ' + holecards_pict_file
 print "Raspi Command:" + take_pic_command
 #uncomment when running on pi
 os.system(take_pic_command)
@@ -54,10 +54,10 @@ print "Training Image Filepath: ", TRAINING_IMAGE_FILEPATH
 card_vision = CardVision()
 training_deck = card_vision.get_training(TRAINING_LABELS_FILEPATH, TRAINING_IMAGE_FILEPATH, NUM_CARDS_IN_DECK)
 
-card_filepath = os.path.join(THIS_DIR, holecards_pict_file)
-print 'hole cards filepath:', card_filepath
+#card_filepath = os.path.join(THIS_DIR, holecards_pict_file)
+print 'hole cards filepath:', holecards_pict_file
 
-player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+player_hand = card_vision.find_hole_cards(holecards_pict_file, training_deck)
 
 
 print " "
