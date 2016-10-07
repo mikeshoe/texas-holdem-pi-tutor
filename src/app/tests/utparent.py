@@ -194,6 +194,12 @@ class UTParent(unittest.TestCase):
         ph.add_hole_card(self.get_ten_spades())
         return ph
     
+    def get_player_hand_7S_2D(self):
+        ph = PlayerHand()
+        ph.add_hole_card(self.get_seven_spades())
+        ph.add_hole_card(self.get_two_diamonds())
+        return ph
+    
     # Community Cards
     def get_community_cards_AS_KS_JS_10D_2H(self):
         community_cards = CommunityCards()
@@ -203,7 +209,15 @@ class UTParent(unittest.TestCase):
         community_cards.add_community_card(self.get_ten_diamonds())
         community_cards.add_community_card(self.get_two_hearts())
         return community_cards
-        
+    
+    def get_community_cards_AS_KS_JS_10D_9H(self):
+        community_cards = CommunityCards()
+        community_cards.add_community_card(self.get_ace_spades())
+        community_cards.add_community_card(self.get_king_spades())
+        community_cards.add_community_card(self.get_jack_spades())
+        community_cards.add_community_card(self.get_ten_diamonds())
+        community_cards.add_community_card(self.get_nine_hearts())
+        return community_cards        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
