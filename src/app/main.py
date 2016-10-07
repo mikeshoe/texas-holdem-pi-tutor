@@ -71,13 +71,15 @@ try:
         
         #player_hand = card_vision.find_hole_cards(holecards_pict_file, training_deck)
         
-        
+        Output.printSeparator()
         print " "
         print " "
         #print "   Scanned hole cards are: ", hole_card_one, " and ", hole_card_two
         print "***   Scanned hole cards are: ", player_hand.holeCards[0], " and ", player_hand.holeCards[1]
         print " "
         print " "
+        Output.printSeparator()
+
         
         'create game deck of cards'
         deck = Deck()
@@ -87,9 +89,9 @@ try:
         deck.remove_card_from_deck(player_hand.holeCards[1])
         
         analyzer = HandAnalyzer()
-        print "**********************************************************************"
+        Output.printSeparator()
         print "***   Preflop advice:", analyzer.calculate_preflop_strength(player_hand), "    ***"
-        print "**********************************************************************"
+        Output.printSeparator()
         print " "
         print " "
         
