@@ -21,10 +21,10 @@ class Output(object):
 """
         
     @staticmethod
-    def printSeparator(self):
+    def printSeparator():
         print "**********************************************************************"
 
     @staticmethod
-    def printMessage(self, message):
+    def printMessage(message):
         print "***   %s    ***" %message
  
