@@ -5,10 +5,11 @@ Created on Sep 14, 2016
 '''
 
 from app.cardvalue import CardValue
+from app.cardsuit import CardSuit
 
 class Card(object):
     'Class that represents an individual playing card'
-    
+
     def is_two(self):
         return self.cardValue == CardValue.TWO
     

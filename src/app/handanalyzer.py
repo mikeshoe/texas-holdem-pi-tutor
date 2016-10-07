@@ -6,15 +6,19 @@ Created on Sep 20, 2016
 from app.playerhand import PlayerHand
 from app.communitycards import CommunityCards
 from app.handstrength import HandStrength
+from app.cardvalue import CardValue
+from app.cardsuit import CardSuit
 
 
 
 class HandAnalyzer(object):
     'Class that contains the hand analyzer logic'
     
-
+    'class variable lists containing all values & suits'
+    cardValueList = [CardValue.ACE, CardValue.KING, CardValue.QUEEN, CardValue.JACK, CardValue.TEN, CardValue.NINE, CardValue.EIGHT, CardValue.SEVEN, CardValue.SIX, CardValue.FIVE, CardValue.FOUR, CardValue.THREE, CardValue.TWO]
+    cardSuitList = [CardSuit.CLUB, CardSuit.DIAMOND, CardSuit.HEART, CardSuit.SPADE]
         
-    def calculate_preflop_strength(self, player_hand):
+    def analyze_preflop(self, player_hand):
         hand_strength = HandStrength()
         hand_strength.step = HandStrength.STEP_PRE_FLOP
         
@@ -102,7 +106,13 @@ class HandAnalyzer(object):
         return False    
     
     def is_four_of_a_kind(self):
-        return False    
+        for cval in self.cardValueList:
+            #print "is_four_of_a_kind cval:", cval
+            cardvalue_count = self.occurences_by_value(cval)
+            if cardvalue_count == 4:
+                return True
+            
+        return False   
     
     def is_full_house(self):
         return False  
@@ -114,13 +124,39 @@ class HandAnalyzer(object):
         return False     
     
     def is_three_of_a_kind(self):
+        for cval in self.cardValueList:
+            #print "is_three_of_a_kind cval:", cval
+            cardvalue_count = self.occurences_by_value(cval)
+            if cardvalue_count >= 3:
+                return True
+            
         return False          
 
     def is_two_pair(self):
         return False  
     
     def is_pair(self):
+        for cval in self.cardValueList:
+            #print "is_pair cval:", cval
+            cardvalue_count = self.occurences_by_value(cval)
+            if cardvalue_count >= 2:
+                return True
+            
         return False
+                
+            
+    
+    def occurences_by_value(self, card_value):
+        value_count = 0
+        for card in self.all_cards_list:
+            #print "occurences_by_value card:", card
+            if card_value == card.cardValue:
+                value_count = value_count + 1
+        
+        return value_count
+        
+    
+    
          
     def __init__(self):
         self.all_cards_list = list()

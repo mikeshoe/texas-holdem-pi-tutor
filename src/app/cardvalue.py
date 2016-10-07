@@ -19,5 +19,4 @@ class CardValue(object):
     FIVE = "FIVE"
     FOUR = "FOUR"
     THREE = "THREE"
-    TWO = "TWO"
-    
+    TWO = "TWO"    

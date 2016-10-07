@@ -35,8 +35,26 @@ class Test(UTParent):
         
     def test_high_card_hand(self):
         assert HandStrength.HAND_HIGH_CARD == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_9H())
-        
+    
+    def test_one_pair_hand(self):
+        assert HandStrength.HAND_PAIR == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_2H())    
+    
+    def test_not_one_pair_hand(self):
+        assert HandStrength.HAND_PAIR != self.ha.analyze_hand(self.get_player_hand_3C_4C(), self.get_community_cards_AS_KS_JS_10D_2H())
+     
+    def test_three_of_kind_hand(self):
+        assert HandStrength.HAND_THREE_0F_A_KIND == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+    
+    def test_not_three_of_a_kind_hand(self):
+        assert HandStrength.HAND_THREE_0F_A_KIND != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_2H())
 
+    def test_four_of_kind_hand(self):
+        assert HandStrength.HAND_FOUR_OF_A_KIND == self.ha.analyze_hand(self.get_player_hand_2S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+    
+    def test_not_four_of_a_kind_hand(self):
+        assert HandStrength.HAND_FOUR_OF_A_KIND != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())
+                    
+            
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()
