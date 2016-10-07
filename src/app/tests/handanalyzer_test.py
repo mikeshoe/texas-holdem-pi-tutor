@@ -19,10 +19,11 @@ class Test(UTParent):
         pass
 
 
-    def test_combine_cards(self):
+    def test_combine_and_get_num_cards(self):
         ha = HandAnalyzer()
-        #ha.combine_cards(self.get_player_hand_AC_AD(), community_cards)
-        pass
+        ha.combine_cards(self.get_player_hand_QS_10S(), self.get_community_cards_AS_KS_JS_10D_2H())
+        #assert ha.num_cards() == 7
+        
 
 
 if __name__ == "__main__":

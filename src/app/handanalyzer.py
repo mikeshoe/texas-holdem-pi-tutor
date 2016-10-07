@@ -24,7 +24,8 @@ class HandAnalyzer(object):
         
         if player_hand.is_pocket_rockets():  #1 best possible
             hand_strength.preflop_code = 1
-            hand_strength.preflop_desc = "No better starting hand than Pocket Rockets!"
+            #hand_strength.preflop_desc = "No better starting hand than Pocket Rockets!"
+            return "No better starting hand than Pocket Rockets!"
         elif player_hand.is_face_pair(): #2 should play
             return "Pocket pair of face cards is very strong"
         elif player_hand.is_pair(): #2 should play
@@ -52,10 +53,13 @@ class HandAnalyzer(object):
         pass         
     
     def combine_cards(self, player_hand, community_cards):
-        all_cards_list = list()
-        all_cards_list.append(player_hand.get_player_hole_cards())
-        all_cards_list.append(community_cards.get_community_cards())
-        return all_cards_list
+        #self.all_cards_list = list()
+        self.all_cards_list.append(player_hand.get_player_hole_cards())
+        self.all_cards_list.append(community_cards.get_community_cards())
+        return self.all_cards_list
+    
+    def num_cards(self):
+            return len(self.all_cards_list)
         
         
     def __init__(self):
@@ -63,6 +67,7 @@ class HandAnalyzer(object):
         self.flop_strength = None
         self.turn_strength = None 
         self.river_strength = None
+        self.all_cards_list = list()
         
         
         

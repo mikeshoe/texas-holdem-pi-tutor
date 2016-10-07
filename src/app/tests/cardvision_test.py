@@ -7,6 +7,7 @@ import unittest
 import os
 from app.cardvision import CardVision
 from app.tests.utparent import UTParent
+
  
 
 
@@ -19,49 +20,39 @@ class Test(UTParent):
     TRAINING_IMAGE_FILEPATH = os.path.join(THIS_DIR, '../images/training_image.png')
     #print "Training Image Filepath: ", TRAINING_IMAGE_FILEPATH
         
+    training_deck = None
+    
     def setUp(self):
-        pass
-
+        if self.training_deck == None:
+            card_vision = CardVision()
+            self.training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
 
     def tearDown(self):
         pass
 
     
     def test_get_training(self):
-        card_vision = CardVision()
-        assert None != card_vision
-        
-        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
-        assert None != training_deck
+        assert None != self.training_deck
         
     def test_find_ten_clubs_and_king_diamonds(self):
-        card_vision = CardVision()
-        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
-        
         card_filepath = os.path.join(self.THIS_DIR, '../images/10c-kd.jpg')
-        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+        player_hand = self.card_vision.find_hole_cards(card_filepath, self.training_deck)
 
         assert True == player_hand.has_card (self.get_ten_clubs())
         assert True == player_hand.has_card (self.get_king_diamonds())
         
         
     def test_find_ten_diamonds_and_two_diamonds(self):
-        card_vision = CardVision()
-        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
-        
         card_filepath = os.path.join(self.THIS_DIR, '../images/10d-2d.jpg')
-        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+        player_hand = self.card_vision.find_hole_cards(card_filepath, self.training_deck)
 
         assert True == player_hand.has_card (self.get_ten_diamonds())
         assert True == player_hand.has_card (self.get_two_diamonds())
         assert False == player_hand.has_card (self.get_three_diamonds())
         
     def test_find_ten_spades_and_ace_hearts(self):
-        card_vision = CardVision()
-        training_deck = card_vision.get_training(self.TRAINING_LABELS_FILEPATH, self.TRAINING_IMAGE_FILEPATH, self.NUM_CARDS_IN_DECK)
-        
         card_filepath = os.path.join(self.THIS_DIR, '../images/10s-ah.jpg')
-        player_hand = card_vision.find_hole_cards(card_filepath, training_deck)
+        player_hand = self.card_vision.find_hole_cards(card_filepath, self.training_deck)
 
         assert True == player_hand.has_card (self.get_ten_spades())
         assert True == player_hand.has_card (self.get_ace_hearts())

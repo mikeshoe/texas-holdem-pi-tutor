@@ -1,8 +1,14 @@
+# /usr/bin/python
+
 '''
 Created on Sep 16, 2016
 
 @author: mike
 '''
+#import sys
+#sys.path.insert(0, "/usr/local/lib/python2.7/site-packages")
+#sys.path.insert(0, "/home/pi/git/texas/holdem-tutor/src")
+
 from app.deck import Deck
 from app.card import Card
 from app.playerhand import PlayerHand
@@ -18,7 +24,7 @@ if __name__ == '__main__':
 NUM_CARDS_IN_DECK = 52
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 TRAINING_LABELS_FILEPATH = os.path.join(THIS_DIR, './config/training_labels.tsv')
-print "Training Labels Filepath: ", TRAINING_LABELS_FILEPATH 
+#print "Training Labels Filepath: ", TRAINING_LABELS_FILEPATH 
 
 
 'mocking out scanned cards - KEVIN SHIT PLUGS IN HERE'
@@ -44,20 +50,20 @@ utc_ts = datetime.datetime.utcnow()
 utc_string = utc_ts.strftime('%Y-%m-%d-%H%M%SZ')
 holecards_pict_file = "/home/pi/hole_cards-" + utc_string + ".jpg"
 take_pic_command ='raspistill -n -t 1000 -o ' + holecards_pict_file
-print "Raspi Command:" + take_pic_command
+#print "Raspi Command:" + take_pic_command
 #uncomment when running on pi
-os.system(take_pic_command)
+#os.system(take_pic_command)
 
 TRAINING_IMAGE_FILEPATH = os.path.join(THIS_DIR, './images/training_image.png')
-print "Training Image Filepath: ", TRAINING_IMAGE_FILEPATH
+#print "Training Image Filepath: ", TRAINING_IMAGE_FILEPATH
 
 card_vision = CardVision()
 training_deck = card_vision.get_training(TRAINING_LABELS_FILEPATH, TRAINING_IMAGE_FILEPATH, NUM_CARDS_IN_DECK)
 
 #card_filepath = os.path.join(THIS_DIR, holecards_pict_file)
-print 'hole cards filepath:', holecards_pict_file
+#print 'hole cards filepath:', holecards_pict_file
 
-player_hand = card_vision.find_hole_cards(holecards_pict_file, training_deck)
+#player_hand = card_vision.find_hole_cards(holecards_pict_file, training_deck)
 
 
 print " "

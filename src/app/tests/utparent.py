@@ -8,6 +8,7 @@ from app.card import Card
 from app.cardsuit import CardSuit
 from app.cardvalue import CardValue
 from app.playerhand import PlayerHand
+from app.communitycards import CommunityCards
 
 class UTParent(unittest.TestCase):
 
@@ -186,6 +187,23 @@ class UTParent(unittest.TestCase):
         ph.add_hole_card(self.get_ace_clubs())
         ph.add_hole_card(self.get_ace_diamonds())
         return ph
+    
+    def get_player_hand_QS_10S(self):
+        ph = PlayerHand()
+        ph.add_hole_card(self.get_queen_spades())
+        ph.add_hole_card(self.get_ten_spades())
+        return ph
+    
+    # Community Cards
+    def get_community_cards_AS_KS_JS_10D_2H(self):
+        community_cards = CommunityCards()
+        community_cards.add_community_card(self.get_ace_spades())
+        community_cards.add_community_card(self.get_king_spades())
+        community_cards.add_community_card(self.get_jack_spades())
+        community_cards.add_community_card(self.get_ten_diamonds())
+        community_cards.add_community_card(self.get_two_hearts())
+        return community_cards
+        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
