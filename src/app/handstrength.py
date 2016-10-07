@@ -20,10 +20,12 @@ class HandStrength(object):
     HIGH_CARD = "High Card"
     
     
-
+    def best_hand(self, card_list):
+        pass
     
     
     def __init__(self):
+        card_list = None
         preflop_code = None
         preflop_desc = None
         
