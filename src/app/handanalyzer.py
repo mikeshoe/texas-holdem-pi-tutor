@@ -66,7 +66,10 @@ class HandAnalyzer(object):
         pass
             
     def calculate_river_strength(self, player_hand, community_cards):
-        pass         
+        hand_strength = HandStrength() 
+        self.combine_cards(player_hand, community_cards)
+        return hand_strength.best_hand(self.all_cards_list)
+                
     
     def combine_cards(self, player_hand, community_cards):
         if player_hand != None:
