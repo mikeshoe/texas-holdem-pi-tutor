@@ -9,6 +9,12 @@ from app.cardvalue import CardValue
 class Card(object):
     'Class that represents an individual playing card'
     
+    def is_two(self):
+        return self.cardValue == CardValue.TWO
+    
+    def is_seven(self):
+        return self.cardValue == CardValue.SEVEN
+    
     def is_face(self):
         return self.cardValue in (CardValue.KING, CardValue.QUEEN, CardValue.JACK)
     
