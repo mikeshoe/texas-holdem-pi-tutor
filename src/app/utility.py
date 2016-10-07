@@ -3,7 +3,6 @@ Created on Oct 7, 2016
 
 @author: kevin
 '''
-from _dbus_bindings import Message
 class Output(object):
     pass
     @staticmethod
