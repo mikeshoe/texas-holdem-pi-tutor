@@ -17,6 +17,7 @@ from app.cardvision import CardVision
 import time
 import datetime
 import os
+from app.utility import Output
 
 if __name__ == '__main__':
     pass
@@ -26,6 +27,7 @@ THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 TRAINING_LABELS_FILEPATH = os.path.join(THIS_DIR, './config/training_labels.tsv')
 #print "Training Labels Filepath: ", TRAINING_LABELS_FILEPATH 
 
+Output.printWelcomeBanner()
 
 'mocking out scanned cards - KEVIN SHIT PLUGS IN HERE'
 mock_deck = Deck()
@@ -37,10 +39,7 @@ player_hand = PlayerHand()
 player_hand.add_hole_card(hole_card_one)
 player_hand.add_hole_card(hole_card_two)
 
-print "WELCOME TO THE TEXAS HOLD-EM TUTOR"
-print"-----------------------------------"
-print " "
-print " "
+
 
 print "Please put your hole cards on the scanner:"
 #print "(press any key once your hole cards are in place)"
@@ -57,63 +56,73 @@ take_pic_command ='raspistill -n -t 1000 -o ' + holecards_pict_file
 TRAINING_IMAGE_FILEPATH = os.path.join(THIS_DIR, './images/training_image.png')
 #print "Training Image Filepath: ", TRAINING_IMAGE_FILEPATH
 
+print "Loading card deck..."
 card_vision = CardVision()
 training_deck = card_vision.get_training(TRAINING_LABELS_FILEPATH, TRAINING_IMAGE_FILEPATH, NUM_CARDS_IN_DECK)
 
-#card_filepath = os.path.join(THIS_DIR, holecards_pict_file)
-#print 'hole cards filepath:', holecards_pict_file
+print "Ready to begin.  Press ctrl-c at any time to quit."
 
-#player_hand = card_vision.find_hole_cards(holecards_pict_file, training_deck)
+try:
+    while True:
+        
+        
+        #card_filepath = os.path.join(THIS_DIR, holecards_pict_file)
+        #print 'hole cards filepath:', holecards_pict_file
+        
+        #player_hand = card_vision.find_hole_cards(holecards_pict_file, training_deck)
+        
+        Output.printSeparator()
+        print " "
+        print " "
+        #print "   Scanned hole cards are: ", hole_card_one, " and ", hole_card_two
+        print "***   Scanned hole cards are: ", player_hand.holeCards[0], " and ", player_hand.holeCards[1]
+        print " "
+        print " "
+        Output.printSeparator()
 
+        
+        'create game deck of cards'
+        deck = Deck()
+        
+        'must remove scanned cards from deck so they do not show up in community cards'
+        deck.remove_card_from_deck(player_hand.holeCards[0])
+        deck.remove_card_from_deck(player_hand.holeCards[1])
+        
+        analyzer = HandAnalyzer()
+        Output.printSeparator()
+        print "***   Preflop advice:", analyzer.calculate_preflop_strength(player_hand), "    ***"
+        Output.printSeparator()
+        print " "
+        print " "
+        
+        
+        #print "Press any key to play the flop:"
+        #print "Flop is:", deck.draw_card(), ",", deck.draw_card(), ",", deck.draw_card()
+        #print "Hole cards: ", hole_card_one, " and ", hole_card_two
+        #print "**********************************************************************"
+        #print "***   Post flop advice:", analyzer.calculate_preflop_strength(player_hand), "   ***"
+        #print "**********************************************************************"
+        #print " "
+        #print " "
+        #print " "
+        
+        #print "Press any key to play the turn:"
+        #print "Hole cards: ", hole_card_one, " and ", hole_card_two
+        #print "Turn is:", deck.draw_card()
+        #print "**********************************************************************"
+        #print "***   Post Turn advice:", analyzer.calculate_preflop_strength(player_hand), "   ***"
+        #print "**********************************************************************"
+        #print " "
+        #print " "
+        #print " "
+        
+        #print "Press any key to play the river:"
+        #print "Hole cards: ", hole_card_one, " and ", hole_card_two
+        #print "River is:", deck.draw_card()
+        #print "**********************************************************************"
+        #print "***   Post River advice:", analyzer.calculate_preflop_strength(player_hand), "  ***"
+        #print "**********************************************************************"
+        #print " "
 
-print " "
-print " "
-#print "   Scanned hole cards are: ", hole_card_one, " and ", hole_card_two
-print "***   Scanned hole cards are: ", player_hand.holeCards[0], " and ", player_hand.holeCards[1]
-print " "
-print " "
-
-'create game deck of cards'
-deck = Deck()
-
-'must remove scanned cards from deck so they do not show up in community cards'
-deck.remove_card_from_deck(player_hand.holeCards[0])
-deck.remove_card_from_deck(player_hand.holeCards[1])
-
-analyzer = HandAnalyzer()
-print "**********************************************************************"
-print "***   Preflop advice:", analyzer.calculate_preflop_strength(player_hand), "    ***"
-print "**********************************************************************"
-print " "
-print " "
-
-
-#print "Press any key to play the flop:"
-#print "Flop is:", deck.draw_card(), ",", deck.draw_card(), ",", deck.draw_card()
-#print "Hole cards: ", hole_card_one, " and ", hole_card_two
-#print "**********************************************************************"
-#print "***   Post flop advice:", analyzer.calculate_preflop_strength(player_hand), "   ***"
-#print "**********************************************************************"
-#print " "
-#print " "
-#print " "
-
-#print "Press any key to play the turn:"
-#print "Hole cards: ", hole_card_one, " and ", hole_card_two
-#print "Turn is:", deck.draw_card()
-#print "**********************************************************************"
-#print "***   Post Turn advice:", analyzer.calculate_preflop_strength(player_hand), "   ***"
-#print "**********************************************************************"
-#print " "
-#print " "
-#print " "
-
-#print "Press any key to play the river:"
-#print "Hole cards: ", hole_card_one, " and ", hole_card_two
-#print "River is:", deck.draw_card()
-#print "**********************************************************************"
-#print "***   Post River advice:", analyzer.calculate_preflop_strength(player_hand), "  ***"
-#print "**********************************************************************"
-#print " "
-
-
+except KeyboardInterrupt:
+    print 'Quitting game.' 
