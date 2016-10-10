@@ -39,5 +39,5 @@ class HandStrength(object):
         card_list = None
         advice = None
         message = None
-        hand_result = None
+        hand = None
         

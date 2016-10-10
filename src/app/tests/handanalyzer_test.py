@@ -34,55 +34,55 @@ class Test(UTParent):
         assert 5 == self.ha.num_cards() 
         
     def test_high_card_hand(self):
-        assert HandStrength.HAND_HIGH_CARD == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_9H())
+        assert HandStrength.HAND_HIGH_CARD == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_9H()).hand
     
     def test_one_pair_hand(self):
-        assert HandStrength.HAND_PAIR == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_2H())    
+        assert HandStrength.HAND_PAIR == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_2H()).hand   
     
     def test_not_one_pair_hand(self):
-        assert HandStrength.HAND_PAIR != self.ha.analyze_hand(self.get_player_hand_3C_4C(), self.get_community_cards_AS_KS_JS_10D_2H())
+        assert HandStrength.HAND_PAIR != self.ha.analyze_hand(self.get_player_hand_3C_4C(), self.get_community_cards_AS_KS_JS_10D_2H()).hand
      
     def test_two_pair_hand(self):
-        assert HandStrength.HAND_TWO_PAIR == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_7D_2H())    
+        assert HandStrength.HAND_TWO_PAIR == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_7D_2H()).hand   
     
     def test_not_two_pair_hand(self):
-        assert HandStrength.HAND_TWO_PAIR != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_2H())    
+        assert HandStrength.HAND_TWO_PAIR != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_2H()).hand    
      
     def test_three_of_kind_hand(self):
-        assert HandStrength.HAND_THREE_0F_A_KIND == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+        assert HandStrength.HAND_THREE_0F_A_KIND == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H()).hand    
     
     def test_not_three_of_a_kind_hand(self):
-        assert HandStrength.HAND_THREE_0F_A_KIND != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_2H())
+        assert HandStrength.HAND_THREE_0F_A_KIND != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_2H()).hand
 
     def test_four_of_kind_hand(self):
-        assert HandStrength.HAND_FOUR_OF_A_KIND == self.ha.analyze_hand(self.get_player_hand_2S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+        assert HandStrength.HAND_FOUR_OF_A_KIND == self.ha.analyze_hand(self.get_player_hand_2S_2D(), self.get_community_cards_AS_KS_JS_2C_2H()).hand    
     
     def test_not_four_of_a_kind_hand(self):
-        assert HandStrength.HAND_FOUR_OF_A_KIND != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())
+        assert HandStrength.HAND_FOUR_OF_A_KIND != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H()).hand
     
     def test_not_flush(self): 
-        assert HandStrength.HAND_FLUSH != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+        assert HandStrength.HAND_FLUSH != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H()).hand    
         
     def test_flush(self): 
-        assert HandStrength.HAND_FLUSH == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2S_2H())    
+        assert HandStrength.HAND_FLUSH == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2S_2H()).hand    
 
     def test_full_house_hand(self):
-        assert HandStrength.HAND_FULL_HOUSE == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_7S_2C_2H())    
+        assert HandStrength.HAND_FULL_HOUSE == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_7S_2C_2H()).hand    
 
     def test_not_full_house_hand(self):
-        assert HandStrength.HAND_FULL_HOUSE != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+        assert HandStrength.HAND_FULL_HOUSE != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H()).hand  
      
     def test_straight_hand(self):
-        assert HandStrength.HAND_STRAIGHT == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_QD_JD_10S())    
+        assert HandStrength.HAND_STRAIGHT == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_QD_JD_10S()).hand    
 
     def test_not_straight_hand(self):
-        assert HandStrength.HAND_STRAIGHT != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+        assert HandStrength.HAND_STRAIGHT != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H()).hand   
 
     def test_straight_flush_hand(self):
-        assert HandStrength.HAND_STRAIGHT_FLUSH == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_KS_QS_JS_10S_9S())    
+        assert HandStrength.HAND_STRAIGHT_FLUSH == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_KS_QS_JS_10S_9S()).hand   
 
     def test_not_straight_flush_hand(self):
-        assert HandStrength.HAND_STRAIGHT_FLUSH != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+        assert HandStrength.HAND_STRAIGHT_FLUSH != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H()).hand   
             
     
 if __name__ == "__main__":

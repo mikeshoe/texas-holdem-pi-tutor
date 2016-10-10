@@ -92,23 +92,43 @@ class HandAnalyzer(object):
             hand_strength.step = HandStrength.STEP_POST_RIVER
             
         if self.is_straight_flush(): #done
-            return HandStrength.HAND_STRAIGHT_FLUSH
+            hand_strength.advice = HandStrength.ADVICE_MUST_PLAY
+            hand_strength.message = "Straight Flush is the top hand in hold em.  The only hand that beats it is a higher straight flush.  Play it!!"
+            hand_strength.hand = HandStrength.HAND_STRAIGHT_FLUSH
         elif self.is_four_of_a_kind(): #done
-            return HandStrength.HAND_FOUR_OF_A_KIND 
+            hand_strength.advice = HandStrength.ADVICE_MUST_PLAY
+            hand_strength.message = "Four of a kind is an outstanding hand. You should feel confident playing it without hesitation."
+            hand_strength.hand = HandStrength.HAND_FOUR_OF_A_KIND 
         elif self.is_full_house(): #done
-            return HandStrength.HAND_FULL_HOUSE
+            hand_strength.advice = HandStrength.ADVICE_SHOULD_PLAY
+            hand_strength.message = "A full house is great hand so you should play it in all but the most conservative games."
+            hand_strength.hand = HandStrength.HAND_FULL_HOUSE
         elif self.is_flush(): #done
-            return HandStrength.HAND_FLUSH 
+            hand_strength.advice = HandStrength.ADVICE_MAY_PLAY
+            hand_strength.message = "A Flush is decent hand.  Consider your opponents and proceed with caution."
+            hand_strength.hand = HandStrength.HAND_FLUSH 
         elif self.is_straight(): #done
-            return HandStrength.HAND_STRAIGHT
+            hand_strength.advice = HandStrength.ADVICE_MAY_PLAY
+            hand_strength.message = "Straight is a decent hand.  Consider your opponents and proceed with caution."
+            hand_strength.hand = HandStrength.HAND_STRAIGHT
         elif self.is_three_of_a_kind(): #done
-            return HandStrength.HAND_THREE_0F_A_KIND
+            hand_strength.advice = HandStrength.ADVICE_MAY_PLAY
+            hand_strength.message = "Three of a kind is a decent hand.  Consider your opponents and proceed with caution."
+            hand_strength.hand = HandStrength.HAND_THREE_0F_A_KIND
         elif self.is_two_pair(): #done
-            return HandStrength.HAND_TWO_PAIR
+            hand_strength.advice = HandStrength.ADVICE_MAY_PLAY
+            hand_strength.message = "Two pair is a fairly weak hand.  Do not play this unless you like to play extremely loose."
+            hand_strength.hand = HandStrength.HAND_TWO_PAIR
         elif self.is_pair(): #done
-            return HandStrength.HAND_PAIR
+            hand_strength.advice = HandStrength.ADVICE_SHOULD_NOT_PLAY
+            hand_strength.message = "One pair is a weak hand.  If you want to play it you will have to bet high to scare everyone away."
+            hand_strength.hand = HandStrength.HAND_PAIR
         else:
-            return HandStrength.HAND_HIGH_CARD #done
+            hand_strength.advice = HandStrength.ADVICE_SHOULD_NOT_PLAY
+            hand_strength.message = "Never ever play this unless you are insane!"
+            hand_strength.hand = HandStrength.HAND_HIGH_CARD #done
+            
+        return hand_strength
           
     
     def is_straight_flush(self):
