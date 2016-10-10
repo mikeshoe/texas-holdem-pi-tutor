@@ -90,7 +90,7 @@ try:
         
         analyzer = HandAnalyzer()
         Output.printSeparator()
-        print "***   Preflop advice:", analyzer.calculate_preflop_strength(player_hand), "    ***"
+        print "***   Preflop advice:", analyzer.analyze_preflop(player_hand), "    ***"
         Output.printSeparator()
         print " "
         print " "
