@@ -65,6 +65,7 @@ class HandAnalyzer(object):
         
             
     def analyze_hand(self, player_hand, community_cards):
+        self.all_cards_list = list()
         self.combine_cards(player_hand, community_cards)
         return self.best_hand()
                 
@@ -117,7 +118,7 @@ class HandAnalyzer(object):
             hand_strength.hand = HandStrength.HAND_THREE_0F_A_KIND
         elif self.is_two_pair(): #done
             hand_strength.advice = HandStrength.ADVICE_MAY_PLAY
-            hand_strength.message = "Two pair is a fairly weak hand.  Do not play this unless you like to play extremely loose."
+            hand_strength.message = "Two pair is a fairly weak hand.  Do not proceed unless you like to play extremely loose."
             hand_strength.hand = HandStrength.HAND_TWO_PAIR
         elif self.is_pair(): #done
             hand_strength.advice = HandStrength.ADVICE_SHOULD_NOT_PLAY

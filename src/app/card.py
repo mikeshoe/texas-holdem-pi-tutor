@@ -15,7 +15,10 @@ class Card(object):
     
     def is_seven(self):
         return self.cardValue == CardValue.SEVEN
-    
+
+    def is_eight(self):
+        return self.cardValue == CardValue.EIGHT
+        
     def is_face(self):
         return self.cardValue in (CardValue.KING, CardValue.QUEEN, CardValue.JACK)
     

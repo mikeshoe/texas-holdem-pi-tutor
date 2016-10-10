@@ -73,6 +73,8 @@ class CardVision(object):
         flag, thresh = cv2.threshold(blur, 120, 255, cv2.THRESH_BINARY) 
            
         contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+        #newer versions of opencv return 3 params
+        #_, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
     
         contours = sorted(contours, key=cv2.contourArea,reverse=True)[:numcards]  
     

@@ -78,5 +78,8 @@ class PlayerHand(object):
     
     def is_seven_two(self):
         return self.holeCards[0].is_seven() and self.holeCards[1].is_two() or self.holeCards[0].is_two() and self.holeCards[1].is_seven()
-        
+    
+    def is_eight_two(self):
+        return self.holeCards[0].is_eight() and self.holeCards[1].is_two() or self.holeCards[0].is_two() and self.holeCards[1].is_eight()
+      
         

@@ -26,4 +26,14 @@ class CommunityCards(object):
     def get_community_cards(self):
         return self.communityCards
     
+    def __str__(self):
+        to_print = ""
+        for item in self.communityCards:
+            if to_print == "":
+                to_print = str(item)
+            else:
+                to_print = to_print + " , " + str(item)
+        return to_print
+    
+    
         
