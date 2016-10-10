@@ -53,8 +53,14 @@ class Test(UTParent):
     
     def test_not_four_of_a_kind_hand(self):
         assert HandStrength.HAND_FOUR_OF_A_KIND != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())
-                    
+    
+    def test_not_flush(self): 
+        assert HandStrength.HAND_FLUSH != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+        
+    def test_flush(self): 
+        assert HandStrength.HAND_FLUSH == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2S_2H())    
             
+    
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

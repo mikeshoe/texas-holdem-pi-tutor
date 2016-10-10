@@ -78,6 +78,15 @@ class HandAnalyzer(object):
         return len(self.all_cards_list)
         
     def best_hand(self):
+        hand_strength = HandStrength()
+        
+        if self.num_cards() == 5:  #2 player hole cards + 3 community cards
+            hand_strength.step = HandStrength.STEP_POST_FLOP
+        elif self.num_cards() == 6: #2 player hole cards + 4 community cards
+            hand_strength.step = HandStrength.STEP_POST_TURN
+        elif self.num_cards() == 7: #2 player hole cards + 5 community cards
+            hand_strength.step = HandStrength.STEP_POST_RIVER
+            
         if self.is_royal_flush():
             return HandStrength.HAND_ROYAL_FLUSH
         elif self.is_straight_flush():
@@ -118,7 +127,13 @@ class HandAnalyzer(object):
         return False  
     
     def is_flush(self):
-        return False  
+        for csuit in self.cardSuitList:
+            #print "is_three_of_a_kind cval:", cval
+            cardsuit_count = self.occurences_by_suit(csuit)
+            if cardsuit_count >= 5:
+                return True
+            
+        return False
     
     def is_straight(self):
         return False     
@@ -154,6 +169,15 @@ class HandAnalyzer(object):
                 value_count = value_count + 1
         
         return value_count
+    
+    def occurences_by_suit(self, card_suit):
+        suit_count = 0
+        for card in self.all_cards_list:
+            #print "occurences_by_suit card:", card
+            if card_suit == card.cardSuit:
+                suit_count = suit_count + 1
+        #print "occurrences_by_suit:", card_suit, "count:", suit_count
+        return suit_count
         
     
     
