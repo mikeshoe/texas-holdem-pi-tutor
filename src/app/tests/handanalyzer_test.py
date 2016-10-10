@@ -77,6 +77,12 @@ class Test(UTParent):
 
     def test_not_straight_hand(self):
         assert HandStrength.HAND_STRAIGHT != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+
+    def test_straight_flush_hand(self):
+        assert HandStrength.HAND_STRAIGHT_FLUSH == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_KS_QS_JS_10S_9S())    
+
+    def test_not_straight_flush_hand(self):
+        assert HandStrength.HAND_STRAIGHT_FLUSH != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
             
     
 if __name__ == "__main__":

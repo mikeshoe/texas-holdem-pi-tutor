@@ -54,6 +54,10 @@ class HandAnalyzer(object):
             hand_strength.advice = HandStrength.ADVICE_NEVER_PLAY
             hand_strength.message = "Worst starting hand in hold em. Run!!!!"
             return "Worst starting hand in hold em.  Run!!!!"
+        elif player_hand.is_eight_two(): #5 Buster Posey
+            hand_strength.advice = HandStrength.ADVICE_NEVER_PLAY
+            hand_strength.message = "Two Eight is known as the Posey hand.  Buster is hitting .182 in the 2016 post season so steer clear of the Posey hand."
+            return "Worst starting hand in hold em.  Run!!!!"
         else: #4 advise against
             hand_strength.advice = HandStrength.ADVICE_SHOULD_NOT_PLAY
             hand_strength.message = "A good word for of your hand is milk toast. Beware!!!"
@@ -87,9 +91,7 @@ class HandAnalyzer(object):
         elif self.num_cards() == 7: #2 player hole cards + 5 community cards
             hand_strength.step = HandStrength.STEP_POST_RIVER
             
-        if self.is_royal_flush():
-            return HandStrength.HAND_ROYAL_FLUSH
-        elif self.is_straight_flush():
+        if self.is_straight_flush(): #done
             return HandStrength.HAND_STRAIGHT_FLUSH
         elif self.is_four_of_a_kind(): #done
             return HandStrength.HAND_FOUR_OF_A_KIND 
@@ -106,13 +108,11 @@ class HandAnalyzer(object):
         elif self.is_pair(): #done
             return HandStrength.HAND_PAIR
         else:
-            return HandStrength.HAND_HIGH_CARD
+            return HandStrength.HAND_HIGH_CARD #done
           
-    def is_royal_flush(self):
-        return False 
     
     def is_straight_flush(self):
-        return False    
+        return self.is_flush() and self.is_straight()
     
     def is_four_of_a_kind(self):
         for cval in self.cardValueList:
@@ -168,7 +168,7 @@ class HandAnalyzer(object):
                     return True
             else:
                 in_a_row_counter = 0
-        print "is_straight:", val_list
+        #print "is_straight:", val_list
         return False     
     
     def is_three_of_a_kind(self):

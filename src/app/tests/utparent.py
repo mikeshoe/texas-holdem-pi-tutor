@@ -284,7 +284,15 @@ class UTParent(unittest.TestCase):
         community_cards.add_community_card(self.get_jack_diamonds())
         community_cards.add_community_card(self.get_ten_spades())
         return community_cards 
-        
+    
+    def get_community_cards_KS_QS_JS_10S_9S(self):
+        community_cards = CommunityCards()
+        community_cards.add_community_card(self.get_king_spades())
+        community_cards.add_community_card(self.get_queen_spades())
+        community_cards.add_community_card(self.get_jack_spades())
+        community_cards.add_community_card(self.get_ten_spades())
+        community_cards.add_community_card(self.get_nine_spades())
+        return community_cards        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
