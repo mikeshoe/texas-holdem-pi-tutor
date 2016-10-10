@@ -92,11 +92,11 @@ class HandAnalyzer(object):
         elif self.is_straight_flush():
             return HandStrength.HAND_STRAIGHT_FLUSH
         elif self.is_four_of_a_kind():
-            return HandStrength.HAND_FOUR_OF_A_KIND
+            return HandStrength.HAND_FOUR_OF_A_KIND 
         elif self.is_full_house():
             return HandStrength.HAND_FULL_HOUSE
         elif self.is_flush():
-            return HandStrength.HAND_FLUSH
+            return HandStrength.HAND_FLUSH 
         elif self.is_straight():
             return HandStrength.HAND_STRAIGHT
         elif self.is_three_of_a_kind():
@@ -124,7 +124,20 @@ class HandAnalyzer(object):
         return False   
     
     def is_full_house(self):
-        return False  
+        return False
+        three_of_kind_flag = False
+        pair_flag = False
+        
+        for cval in self.cardValueList:
+            #print "is_two_pair cval:", cval
+            cardvalue_count = self.occurences_by_value(cval)
+            if cardvalue_count == 2:
+                if pair_flag == False:
+                    pair_flag = True
+                elif pair_flag == True:
+                    pair_flag = True
+                    
+        return three_of_kind_flag and pair_flag  
     
     def is_flush(self):
         for csuit in self.cardSuitList:
@@ -148,7 +161,20 @@ class HandAnalyzer(object):
         return False          
 
     def is_two_pair(self):
-        return False  
+        one_pair_flag = False
+        two_pair_flag = False
+        
+        for cval in self.cardValueList:
+            #print "is_two_pair cval:", cval
+            cardvalue_count = self.occurences_by_value(cval)
+            if cardvalue_count == 2:
+                if one_pair_flag == False:
+                    one_pair_flag = True
+                elif one_pair_flag == True:
+                    two_pair_flag = True
+                    
+        return one_pair_flag and two_pair_flag
+               
     
     def is_pair(self):
         for cval in self.cardValueList:

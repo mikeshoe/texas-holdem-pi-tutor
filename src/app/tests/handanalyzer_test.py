@@ -42,6 +42,12 @@ class Test(UTParent):
     def test_not_one_pair_hand(self):
         assert HandStrength.HAND_PAIR != self.ha.analyze_hand(self.get_player_hand_3C_4C(), self.get_community_cards_AS_KS_JS_10D_2H())
      
+    def test_two_pair_hand(self):
+        assert HandStrength.HAND_TWO_PAIR == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_7D_2H())    
+    
+    def test_not_two_pair_hand(self):
+        assert HandStrength.HAND_TWO_PAIR != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_10D_2H())    
+     
     def test_three_of_kind_hand(self):
         assert HandStrength.HAND_THREE_0F_A_KIND == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
     

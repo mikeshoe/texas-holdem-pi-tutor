@@ -222,6 +222,15 @@ class UTParent(unittest.TestCase):
         community_cards.add_community_card(self.get_two_hearts())
         return community_cards
     
+    def get_community_cards_AS_KS_JS_7D_2H(self):
+        community_cards = CommunityCards()
+        community_cards.add_community_card(self.get_ace_spades())
+        community_cards.add_community_card(self.get_king_spades())
+        community_cards.add_community_card(self.get_jack_spades())
+        community_cards.add_community_card(self.get_seven_diamonds())
+        community_cards.add_community_card(self.get_two_hearts())
+        return community_cards
+    
     def get_community_cards_AS_KS_JS_10D_9H(self):
         community_cards = CommunityCards()
         community_cards.add_community_card(self.get_ace_spades())
@@ -230,6 +239,15 @@ class UTParent(unittest.TestCase):
         community_cards.add_community_card(self.get_ten_diamonds())
         community_cards.add_community_card(self.get_nine_hearts())
         return community_cards  
+    
+    def get_community_cards_AS_KS_JS_7D_9H(self):
+        community_cards = CommunityCards()
+        community_cards.add_community_card(self.get_ace_spades())
+        community_cards.add_community_card(self.get_king_spades())
+        community_cards.add_community_card(self.get_jack_spades())
+        community_cards.add_community_card(self.get_seven_diamonds())
+        community_cards.add_community_card(self.get_nine_hearts())
+        return community_cards 
     
     def get_community_cards_AS_KS_JS_2C_2H(self): 
         community_cards = CommunityCards()
