@@ -60,8 +60,8 @@ class HandAnalyzer(object):
             return "Worst starting hand in hold em.  Run!!!!"
         else: #4 advise against
             hand_strength.advice = HandStrength.ADVICE_SHOULD_NOT_PLAY
-            hand_strength.message = "A good word for of your hand is milk toast. Beware!!!"
-            return "A good word for of your hand is milk toast. Beware!!!"
+            hand_strength.message = "A good word for your hand is milk toast. Beware!!!"
+            return "A good word for your hand is milk toast. Beware!!!"
         
             
     def analyze_hand(self, player_hand, community_cards):
