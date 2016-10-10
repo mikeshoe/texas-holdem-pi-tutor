@@ -91,19 +91,19 @@ class HandAnalyzer(object):
             return HandStrength.HAND_ROYAL_FLUSH
         elif self.is_straight_flush():
             return HandStrength.HAND_STRAIGHT_FLUSH
-        elif self.is_four_of_a_kind():
+        elif self.is_four_of_a_kind(): #done
             return HandStrength.HAND_FOUR_OF_A_KIND 
-        elif self.is_full_house():
+        elif self.is_full_house(): #done
             return HandStrength.HAND_FULL_HOUSE
-        elif self.is_flush():
+        elif self.is_flush(): #done
             return HandStrength.HAND_FLUSH 
-        elif self.is_straight():
+        elif self.is_straight(): #done
             return HandStrength.HAND_STRAIGHT
-        elif self.is_three_of_a_kind():
+        elif self.is_three_of_a_kind(): #done
             return HandStrength.HAND_THREE_0F_A_KIND
-        elif self.is_two_pair():
+        elif self.is_two_pair(): #done
             return HandStrength.HAND_TWO_PAIR
-        elif self.is_pair():
+        elif self.is_pair(): #done
             return HandStrength.HAND_PAIR
         else:
             return HandStrength.HAND_HIGH_CARD
@@ -134,7 +134,7 @@ class HandAnalyzer(object):
             
         three_of_a_kind = val_list.count(3)
         pair = val_list.count(2)
-        
+        #print self.all_cards_list
         #print val_list 
         
         if three_of_a_kind > 0 and pair > 0:
@@ -152,6 +152,23 @@ class HandAnalyzer(object):
         return False
     
     def is_straight(self):
+        i = 0
+        val_list = list()
+        for cval in self.cardValueList:
+            cardvalue_count = self.occurences_by_value(cval)
+            val_list.append(cardvalue_count)
+            #print "is_straight cval:", cval, "count:", cardvalue_count
+            i = i+1
+            
+        in_a_row_counter = 0    
+        for val_count in val_list:
+            if val_count >= 1:
+                in_a_row_counter = in_a_row_counter + 1
+                if in_a_row_counter == 5:
+                    return True
+            else:
+                in_a_row_counter = 0
+        print "is_straight:", val_list
         return False     
     
     def is_three_of_a_kind(self):

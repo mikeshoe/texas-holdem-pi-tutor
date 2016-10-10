@@ -67,11 +67,17 @@ class Test(UTParent):
         assert HandStrength.HAND_FLUSH == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2S_2H())    
 
     def test_full_house_hand(self):
-        assert HandStrength.HAND_THREE_0F_A_KIND == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_7S_2C_2H())    
+        assert HandStrength.HAND_FULL_HOUSE == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_7S_2C_2H())    
 
     def test_not_full_house_hand(self):
-        assert HandStrength.HAND_THREE_0F_A_KIND == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
-        
+        assert HandStrength.HAND_FULL_HOUSE != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+     
+    def test_straight_hand(self):
+        assert HandStrength.HAND_STRAIGHT == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_QD_JD_10S())    
+
+    def test_not_straight_hand(self):
+        assert HandStrength.HAND_STRAIGHT != self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+            
     
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
