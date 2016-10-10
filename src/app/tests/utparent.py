@@ -256,7 +256,16 @@ class UTParent(unittest.TestCase):
         community_cards.add_community_card(self.get_jack_spades())
         community_cards.add_community_card(self.get_two_clubs())
         community_cards.add_community_card(self.get_two_hearts())
-        return community_cards    
+        return community_cards   
+    
+    def get_community_cards_AS_KS_7S_2C_2H(self): 
+        community_cards = CommunityCards()
+        community_cards.add_community_card(self.get_ace_spades())
+        community_cards.add_community_card(self.get_king_spades())
+        community_cards.add_community_card(self.get_jack_spades())
+        community_cards.add_community_card(self.get_two_clubs())
+        community_cards.add_community_card(self.get_two_hearts())
+        return community_cards  
     
     def get_community_cards_AS_KS_JS_2S_2H(self): 
         community_cards = CommunityCards()

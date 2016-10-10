@@ -65,7 +65,13 @@ class Test(UTParent):
         
     def test_flush(self): 
         assert HandStrength.HAND_FLUSH == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2S_2H())    
-            
+
+    def test_full_house_hand(self):
+        assert HandStrength.HAND_THREE_0F_A_KIND == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_7S_2C_2H())    
+
+    def test_not_full_house_hand(self):
+        assert HandStrength.HAND_THREE_0F_A_KIND == self.ha.analyze_hand(self.get_player_hand_7S_2D(), self.get_community_cards_AS_KS_JS_2C_2H())    
+        
     
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

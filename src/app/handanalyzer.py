@@ -124,20 +124,23 @@ class HandAnalyzer(object):
         return False   
     
     def is_full_house(self):
-        return False
-        three_of_kind_flag = False
-        pair_flag = False
-        
+        i = 0
+        val_list = list()
         for cval in self.cardValueList:
-            #print "is_two_pair cval:", cval
             cardvalue_count = self.occurences_by_value(cval)
-            if cardvalue_count == 2:
-                if pair_flag == False:
-                    pair_flag = True
-                elif pair_flag == True:
-                    pair_flag = True
-                    
-        return three_of_kind_flag and pair_flag  
+            val_list.append(cardvalue_count)
+            #print "is_three_of_a_kind cval:", cval, "count:", cardvalue_count
+            i = i+1
+            
+        three_of_a_kind = val_list.count(3)
+        pair = val_list.count(2)
+        
+        #print val_list 
+        
+        if three_of_a_kind > 0 and pair > 0:
+            return True
+        
+        return False 
     
     def is_flush(self):
         for csuit in self.cardSuitList:
@@ -153,12 +156,12 @@ class HandAnalyzer(object):
     
     def is_three_of_a_kind(self):
         for cval in self.cardValueList:
-            #print "is_three_of_a_kind cval:", cval
+            #print "is_four_of_a_kind cval:", cval
             cardvalue_count = self.occurences_by_value(cval)
-            if cardvalue_count >= 3:
+            if cardvalue_count == 3:
                 return True
             
-        return False          
+        return False 
 
     def is_two_pair(self):
         one_pair_flag = False
