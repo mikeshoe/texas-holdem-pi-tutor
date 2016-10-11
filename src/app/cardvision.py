@@ -18,12 +18,6 @@ class CardVision(object):
     'Class responsible for computer vision operations'
     
 
-    ###############################################################################
-    # Utility code from 
-    # http://git.io/vGi60A
-    # Thanks to author of the sudoku example for the wonderful blog posts!
-    ###############################################################################
-
     def rectify(self, h):
         h = h.reshape((4,2))
         hnew = np.zeros((4,2),dtype = np.float32)
@@ -38,9 +32,7 @@ class CardVision(object):
     
         return hnew
     
-    ###############################################################################
-    # Image Matching
-    ###############################################################################
+
     def preprocess(self, img):
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
         blur = cv2.GaussianBlur(gray,(5,5),2 )
@@ -63,10 +55,7 @@ class CardVision(object):
         features = self.preprocess(img)
         return sorted(training.values(), key=lambda x:self.imgdiff(x[1],features))[0][0]
     
-    
-    ###############################################################################
-    # Card Extraction
-    ###############################################################################  
+     
     def getCards(self, im, numcards=2):
         gray = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
         blur = cv2.GaussianBlur(gray,(1,1),1000)
