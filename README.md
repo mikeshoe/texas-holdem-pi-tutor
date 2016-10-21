@@ -13,5 +13,7 @@
 ##Instructions for how to run & play
 * https://github.com/mikeshoe/texas-holdem-tutor/wiki
 
+![Alt text](/src/app/images/tutor-front.jpg?raw=true "Title")
+
 ##Disclaimer
 Please do not gamble your money away.  We are not responsible if you lose your money because of this tool. I'd really like to stress the do not gamble part since your decision making is clearly flawed for considering this tool.   
